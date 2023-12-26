@@ -1,0 +1,14 @@
+{
+  "some_setting": "some value",
+  "color": {
+    "RgbColor": [
+      0,
+      0,
+      0
+    ]
+  },
+  "enabled_features": [
+    "feature1",
+    "feature2"
+  ]
+}
