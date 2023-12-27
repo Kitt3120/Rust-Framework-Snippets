@@ -1,4 +1,19 @@
-use std::{fs::File, path::Path};
+/*
+    Serde (SErialize and DEserialize) can be used to easily convert Rust data structures into
+    different formats, like JSON, and vice versa.
+    To make a struct serializable, add the Serialize trait to it, by either deriving it or implementing it manually.
+
+    Make sure to add serde with the derive feature to your Cargo.toml file:
+    cargo add serde --features derive
+
+    And, for json support:
+    cargo add serde_json
+
+    Supported formats:
+    https://serde.rs/#data-formats
+*/
+
+use std::{fs::File, path::Path, time};
 
 use serde::{Deserialize, Serialize};
 
@@ -18,6 +33,8 @@ struct Config {
 }
 
 fn main() {
+    let now = time::Instant::now();
+
     let path = Path::new("./config.json");
     let exists = path.exists();
 
@@ -38,6 +55,7 @@ fn main() {
     };
 
     println!("Current config:\n{:#?}", config);
+    println!("Elapsed time: {:.2?}", now.elapsed());
 }
 
 fn load_config(file: &File) -> Config {
